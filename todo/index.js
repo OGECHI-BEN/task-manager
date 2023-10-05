@@ -17,14 +17,14 @@ function addTask (){
     let task_content = " ";
    for (let i=0;i< plans.length; i++ ){
       task_content +=`<div id ="task">
-                           <div class  id ="task_contents">
+                           <div class ="task_contents" id ="task_contents_${i}">
                               ${plans[i]}
                               <div class="icons">
-                                 <span ><img src="pen-solid.svg" alt="" onclick ="OpenEditTask()"></span> 
+                                 <span ><img src="pen-solid.svg" alt="" onclick ="OpenEditTask(${i})"></span> 
                                  <span ><img src="trash-can-regular.svg" alt="" onclick ="cancel_task()"></span> 
                               </div>
                            </div>
-                           <div id ="while_editing">
+                           <div id ="while_editing_${i}" class="while_editing">
                               <input id="edit_bar" type = "text" placeholder = "edit task">
                               <div class= "icons">
                                  <span ><img src="check-solid.svg" alt=""onclick ="saveEditedTask()" ></span> 
@@ -42,9 +42,9 @@ function addTask (){
 
 // opening the edit bar
 
- function   OpenEditTask (){
-   document.getElementById('while_editing').style.display = 'block';
-   document.getElementById('task_contents').style.display = 'none';
+ function   OpenEditTask (task_id){
+   document.getElementById(`while_editing_${task_id}`).style.display = 'block';
+   document.getElementById(`task_contents_${task_id}`).style.display = 'none';
    
    let edit = document.getElementById('edit_bar').value
    plans.push(edit);
