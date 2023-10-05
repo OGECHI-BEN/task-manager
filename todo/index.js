@@ -1,4 +1,5 @@
  const plans = ['get my transcript','take Agro related courses','Join Dekemp','actively volunteer','Take German on Duolingo', 'write Ielts', 'get a scholarship', 'go to Germany','graduate with a first class'];
+ let current_edit_taskId =0;
 //   for (let i=0;i< plans.length; i++ ){
 //      console.log(plans[i]);
 //   };
@@ -45,14 +46,17 @@ function addTask (){
  function   OpenEditTask (task_id){
    document.getElementById(`while_editing_${task_id}`).style.display = 'block';
    document.getElementById(`task_contents_${task_id}`).style.display = 'none';
+   document.getElementById(`task_content_${task_id}`).value
    
-   let edit = document.getElementById('edit_bar').value
-   plans.push(edit);
-   saveEditedTask();
-   updateUI;
  }
 
- function cancelTask(){
+ function cancelTask(task_id){
+   console.log(task_id);
+   //delete item
+   plans.splice(task_id,1)
+   //update UI
+   updateUI
+
 
  }
   
